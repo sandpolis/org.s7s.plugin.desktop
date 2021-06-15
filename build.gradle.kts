@@ -20,15 +20,15 @@ plugins {
 }
 
 dependencies {
-	testImplementation("org.junit.jupiter:junit-jupiter-api:5.6.1")
-	testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.6.1")
+	testImplementation("org.junit.jupiter:junit-jupiter-api:5.7.2")
+	testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.7.2")
 
 	if (project.getParent() == null) {
-		api("com.sandpolis:core.instance:0.1.0")
-		api("com.sandpolis:core.net:0.1.0")
+		implementation("com.sandpolis:core.instance:0.2.0")
+		implementation("com.sandpolis:core.net:0.2.0")
 	} else {
-		api(project(":module:com.sandpolis.core.instance"))
-		api(project(":module:com.sandpolis.core.net"))
+		implementation(project(":module:com.sandpolis.core.instance"))
+		implementation(project(":module:com.sandpolis.core.net"))
 	}
 }
 

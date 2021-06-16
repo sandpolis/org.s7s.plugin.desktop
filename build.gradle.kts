@@ -13,9 +13,9 @@ plugins {
 	id("sandpolis-java")
 	id("sandpolis-module")
 	id("sandpolis-protobuf")
-	id("sandpolis-publish")
 	id("sandpolis-soi")
 	id("sandpolis-plugin")
+	id("sandpolis-publish")
 	id("sandpolis-codegen")
 }
 
@@ -24,11 +24,11 @@ dependencies {
 	testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.7.2")
 
 	if (project.getParent() == null) {
-		implementation("com.sandpolis:core.instance:0.2.0")
-		implementation("com.sandpolis:core.net:0.2.0")
+		api("com.sandpolis:core.instance:0.2.0")
+		api("com.sandpolis:core.net:0.2.0")
 	} else {
-		implementation(project(":module:com.sandpolis.core.instance"))
-		implementation(project(":module:com.sandpolis.core.net"))
+		api(project(":module:com.sandpolis.core.instance"))
+		api(project(":module:com.sandpolis.core.net"))
 	}
 }
 

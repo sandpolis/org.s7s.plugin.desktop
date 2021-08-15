@@ -1,6 +1,6 @@
 [
 	{
-		"name": "/profile//desktop",
+		"name": "/profile/*/desktop/*",
 		"attributes": [
 			{
 				"name": "screenshot",

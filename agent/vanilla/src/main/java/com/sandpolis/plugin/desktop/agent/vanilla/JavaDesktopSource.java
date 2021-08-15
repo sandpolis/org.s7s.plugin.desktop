@@ -81,7 +81,7 @@ public class JavaDesktopSource extends StreamSource<EV_DesktopStream> {
 	}
 
 	@Override
-	public void stop() {
+	public void close() {
 		// TODO Auto-generated method stub
 
 	}
@@ -100,5 +100,10 @@ public class JavaDesktopSource extends StreamSource<EV_DesktopStream> {
 				pump();
 			}
 		}).start();
+	}
+
+	@Override
+	public String getStreamKey() {
+		return captureArea.toString();
 	}
 }

@@ -7,7 +7,7 @@
 //  as published by the Mozilla Foundation.                                   //
 //                                                                            //
 //============================================================================//
-package com.sandpolis.plugin.desktop.agent.vanilla;
+package com.sandpolis.plugin.desktop.agent.kilo;
 
 import java.awt.AWTException;
 import java.awt.Rectangle;

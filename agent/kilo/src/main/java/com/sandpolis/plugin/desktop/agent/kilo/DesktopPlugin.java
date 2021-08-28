@@ -7,16 +7,19 @@
 //  as published by the Mozilla Foundation.                                   //
 //                                                                            //
 //============================================================================//
-module com.sandpolis.plugin.desktop.agent.vanilla {
-	exports com.sandpolis.plugin.desktop.agent.vanilla.exe;
-	exports com.sandpolis.plugin.desktop.agent.vanilla;
+package com.sandpolis.plugin.desktop.agent.kilo;
 
-	requires com.google.protobuf;
-	requires com.sandpolis.core.foundation;
-	requires com.sandpolis.core.instance;
-	requires com.sandpolis.core.net;
-	requires com.sandpolis.plugin.desktop;
-	requires java.desktop;
+import com.sandpolis.core.instance.plugin.SandpolisPlugin;
+import com.sandpolis.core.net.exelet.Exelet;
+import com.sandpolis.core.net.plugin.ExeletProvider;
+import com.sandpolis.plugin.desktop.agent.kilo.exe.DesktopExe;
 
-	provides com.sandpolis.core.instance.plugin.SandpolisPlugin with com.sandpolis.plugin.desktop.agent.vanilla.DesktopPlugin;
+public final class DesktopPlugin extends SandpolisPlugin implements ExeletProvider {
+
+	@Override
+	@SuppressWarnings("unchecked")
+	public Class<? extends Exelet>[] getExelets() {
+		return new Class[] { DesktopExe.class };
+	}
+
 }

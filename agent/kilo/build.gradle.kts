@@ -7,19 +7,24 @@
 //  as published by the Mozilla Foundation.                                   //
 //                                                                            //
 //============================================================================//
-package com.sandpolis.plugin.desktop.agent.vanilla;
 
-import com.sandpolis.core.instance.plugin.SandpolisPlugin;
-import com.sandpolis.core.net.exelet.Exelet;
-import com.sandpolis.core.net.plugin.ExeletProvider;
-import com.sandpolis.plugin.desktop.agent.vanilla.exe.DesktopExe;
+plugins {
+	id("java-library")
+	id("sandpolis-java")
+	id("sandpolis-module")
+	id("sandpolis-soi")
+}
 
-public final class DesktopPlugin extends SandpolisPlugin implements ExeletProvider {
+dependencies {
+	testImplementation("org.junit.jupiter:junit-jupiter-api:5.7.2")
+	testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.7.2")
 
-	@Override
-	@SuppressWarnings("unchecked")
-	public Class<? extends Exelet>[] getExelets() {
-		return new Class[] { DesktopExe.class };
+	compileOnly(project.getParent()?.getParent()!!)
+}
+
+eclipse {
+	project {
+		name = "com.sandpolis.plugin.desktop:agent:kilo"
+		comment = "com.sandpolis.plugin.desktop:agent:kilo"
 	}
-
 }

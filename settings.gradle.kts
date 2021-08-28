@@ -11,4 +11,4 @@
 rootProject.name = "com.sandpolis.plugin.desktop"
 
 include("client:lifegem")
-include("agent:vanilla")
+include("agent:kilo")

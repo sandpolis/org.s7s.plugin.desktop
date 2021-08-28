@@ -7,24 +7,16 @@
 //  as published by the Mozilla Foundation.                                   //
 //                                                                            //
 //============================================================================//
+module com.sandpolis.plugin.desktop.agent.kilo {
+	exports com.sandpolis.plugin.desktop.agent.kilo.exe;
+	exports com.sandpolis.plugin.desktop.agent.kilo;
 
-plugins {
-	id("java-library")
-	id("sandpolis-java")
-	id("sandpolis-module")
-	id("sandpolis-soi")
-}
+	requires com.google.protobuf;
+	requires com.sandpolis.core.foundation;
+	requires com.sandpolis.core.instance;
+	requires com.sandpolis.core.net;
+	requires com.sandpolis.plugin.desktop;
+	requires java.desktop;
 
-dependencies {
-	testImplementation("org.junit.jupiter:junit-jupiter-api:5.7.2")
-	testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.7.2")
-
-	compileOnly(project.getParent()?.getParent()!!)
-}
-
-eclipse {
-	project {
-		name = "com.sandpolis.plugin.desktop:agent:vanilla"
-		comment = "com.sandpolis.plugin.desktop:agent:vanilla"
-	}
+	provides com.sandpolis.core.instance.plugin.SandpolisPlugin with com.sandpolis.plugin.desktop.agent.kilo.DesktopPlugin;
 }

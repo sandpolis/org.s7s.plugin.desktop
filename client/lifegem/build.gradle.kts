@@ -20,6 +20,10 @@ dependencies {
 	testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.7.2")
 
 	compileOnly(project.getParent()?.getParent()!!)
+
+	compileOnly("org.openjfx:javafx-base:16")
+	compileOnly("org.openjfx:javafx-graphics:16")
+	compileOnly("org.openjfx:javafx-controls:16")
 }
 
 eclipse {

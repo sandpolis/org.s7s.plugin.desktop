@@ -7,7 +7,7 @@
 //  as published by the Mozilla Foundation.                                   //
 //                                                                            //
 //============================================================================//
-package com.sandpolis.plugin.desktop.agent.vanilla.exe;
+package com.sandpolis.plugin.desktop.agent.kilo.exe;
 
 import static com.sandpolis.core.foundation.util.ProtoUtil.begin;
 import static com.sandpolis.core.foundation.util.ProtoUtil.failure;
@@ -27,7 +27,7 @@ import com.google.protobuf.ByteString;
 import com.sandpolis.core.net.exelet.Exelet;
 import com.sandpolis.core.net.exelet.ExeletContext;
 import com.sandpolis.core.net.stream.OutboundStreamAdapter;
-import com.sandpolis.plugin.desktop.agent.vanilla.JavaDesktopSource;
+import com.sandpolis.plugin.desktop.agent.kilo.JavaDesktopSource;
 import com.sandpolis.plugin.desktop.msg.MsgDesktop.RQ_Screenshot;
 import com.sandpolis.plugin.desktop.msg.MsgDesktop.RS_Screenshot;
 import com.sandpolis.plugin.desktop.msg.MsgRd.EV_DesktopStream;

@@ -21,9 +21,9 @@ dependencies {
 
 	compileOnly(project.getParent()?.getParent()!!)
 
-	compileOnly("org.openjfx:javafx-base:16")
-	compileOnly("org.openjfx:javafx-graphics:16")
-	compileOnly("org.openjfx:javafx-controls:16")
+	compileOnly("org.openjfx:javafx-base:16:linux")
+	compileOnly("org.openjfx:javafx-graphics:16:linux")
+	compileOnly("org.openjfx:javafx-controls:16:linux")
 }
 
 eclipse {

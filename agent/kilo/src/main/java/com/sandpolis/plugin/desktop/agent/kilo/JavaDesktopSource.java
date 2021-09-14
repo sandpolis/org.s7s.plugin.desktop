@@ -19,13 +19,12 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.util.Arrays;
 
-import com.google.protobuf.ByteString;
+import com.google.protobuf.UnsafeByteOperations;
 import com.sandpolis.core.net.stream.StreamSource;
-import com.sandpolis.plugin.desktop.msg.MsgRd.DirtyBlock;
-import com.sandpolis.plugin.desktop.msg.MsgRd.EV_DesktopStream;
-import com.sandpolis.plugin.desktop.msg.MsgRd.RQ_DesktopStream.ColorMode;
+import com.sandpolis.plugin.desktop.msg.MsgDesktop.EV_DesktopOutput;
+import com.sandpolis.plugin.desktop.msg.MsgDesktop.RQ_DesktopStream.ColorMode;
 
-public class JavaDesktopSource extends StreamSource<EV_DesktopStream> {
+public class JavaDesktopSource extends StreamSource<EV_DesktopOutput> {
 
 	private static final int BLOCK_HEIGHT = 16;
 	private static final int BLOCK_WIDTH = 16;
@@ -68,9 +67,12 @@ public class JavaDesktopSource extends StreamSource<EV_DesktopStream> {
 						for (int v : buffer[j][i])
 							data.writeInt(v);
 
-						submit(EV_DesktopStream.newBuilder()
-								.setDirtyBlock(DirtyBlock.newBuilder().setData(ByteString.copyFrom(out.toByteArray())))
-								.build());
+						submit(EV_DesktopOutput.newBuilder() //
+								.setWidth(BLOCK_WIDTH) //
+								.setHeight(BLOCK_HEIGHT) //
+								.setDestX(BLOCK_WIDTH * i) //
+								.setDestY(BLOCK_HEIGHT * j) //
+								.setPixelData(UnsafeByteOperations.unsafeWrap(out.toByteArray())).build());
 					} catch (IOException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();

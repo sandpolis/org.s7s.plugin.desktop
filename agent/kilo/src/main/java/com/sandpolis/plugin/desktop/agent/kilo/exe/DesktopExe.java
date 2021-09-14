@@ -22,16 +22,16 @@ import java.io.ByteArrayOutputStream;
 
 import javax.imageio.ImageIO;
 
-import com.google.protobuf.MessageLiteOrBuilder;
 import com.google.protobuf.ByteString;
+import com.google.protobuf.MessageLiteOrBuilder;
 import com.sandpolis.core.net.exelet.Exelet;
 import com.sandpolis.core.net.exelet.ExeletContext;
 import com.sandpolis.core.net.stream.OutboundStreamAdapter;
 import com.sandpolis.plugin.desktop.agent.kilo.JavaDesktopSource;
+import com.sandpolis.plugin.desktop.msg.MsgDesktop.EV_DesktopOutput;
+import com.sandpolis.plugin.desktop.msg.MsgDesktop.RQ_DesktopStream;
 import com.sandpolis.plugin.desktop.msg.MsgDesktop.RQ_Screenshot;
 import com.sandpolis.plugin.desktop.msg.MsgDesktop.RS_Screenshot;
-import com.sandpolis.plugin.desktop.msg.MsgRd.EV_DesktopStream;
-import com.sandpolis.plugin.desktop.msg.MsgRd.RQ_DesktopStream;
 
 public final class DesktopExe extends Exelet {
 
@@ -58,18 +58,13 @@ public final class DesktopExe extends Exelet {
 
 		context.defer(() -> {
 			var source = new JavaDesktopSource();
-			var outbound = new OutboundStreamAdapter<EV_DesktopStream>(rq.getId(), context.connector,
+			var outbound = new OutboundStreamAdapter<EV_DesktopOutput>(rq.getStreamId(), context.connector,
 					context.request.getFrom());
 			StreamStore.add(source, outbound);
 			source.start();
 		});
 
 		return success(outcome);
-	}
-
-	@Handler(auth = true)
-	public static void ev_desktop_stream(ExeletContext context, EV_DesktopStream ev) {
-		StreamStore.streamData(context.request.getId(), ev);
 	}
 
 	private DesktopExe() {

@@ -14,6 +14,7 @@ module com.sandpolis.plugin.desktop.client.lifegem {
 	requires com.sandpolis.plugin.desktop;
 	requires javafx.graphics;
 	requires com.sandpolis.core.net;
+	requires com.google.protobuf;
 
 	provides com.sandpolis.core.instance.plugin.SandpolisPlugin with com.sandpolis.plugin.desktop.client.lifegem.DesktopPlugin;
 }

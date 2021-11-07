@@ -12,8 +12,8 @@ package com.sandpolis.plugin.desktop.cmd;
 import java.util.concurrent.CompletionStage;
 
 import com.sandpolis.core.net.cmdlet.Cmdlet;
-import com.sandpolis.plugin.desktop.msg.MsgDesktop.RQ_Screenshot;
-import com.sandpolis.plugin.desktop.msg.MsgDesktop.RS_Screenshot;
+import com.sandpolis.plugin.desktop.msg.MsgDesktop.RQ_CaptureScreenshot;
+import com.sandpolis.plugin.desktop.msg.MsgDesktop.RS_CaptureScreenshot;
 
 /**
  * Contains desktop commands.
@@ -28,8 +28,8 @@ public final class DesktopCmd extends Cmdlet<DesktopCmd> {
 	 *
 	 * @return A response future
 	 */
-	public CompletionStage<RS_Screenshot> screenshot() {
-		return request(RS_Screenshot.class, RQ_Screenshot.newBuilder());
+	public CompletionStage<RS_CaptureScreenshot> screenshot() {
+		return request(RS_CaptureScreenshot.class, RQ_CaptureScreenshot.newBuilder());
 	}
 
 	/**

@@ -36,10 +36,6 @@ message RS_DesktopList {
 }
 
 message RQ_DesktopStream {
-    
-    enum CaptureMode {
-
-    }
 
     enum ColorMode {
         // Each pixel encoded in three bytes
@@ -63,9 +59,10 @@ message RQ_DesktopStream {
 
     // The desktop to capture
     string desktop_uuid = 2;
+}
 
-    // The capture mode
-    CaptureMode capture_mode = 3;
+enum RS_DesktopStream {
+    DESKTOP_STREAM_OK = 0;
 }
 
 message EV_DesktopInput {
@@ -133,9 +130,11 @@ message EV_DesktopOutput {
     string clipboard = 8;
 }
 
-message RQ_Screenshot {
+message RQ_CaptureScreenshot {
+    // The desktop to capture
+    string desktop_uuid = 1;
 }
 
-message RS_Screenshot {
+message RS_CaptureScreenshot {
     bytes data = 1;
 }

@@ -9,9 +9,9 @@
 //============================================================================//
 syntax = "proto3";
 
-package plugin.desktop.msg;
+package plugin.desktop;
 
-option java_package = "com.sandpolis.plugin.desktop.msg";
+option java_package = "com.sandpolis.plugin.desktop";
 
 // Request for a listing of available desktops
 message RQ_DesktopList {

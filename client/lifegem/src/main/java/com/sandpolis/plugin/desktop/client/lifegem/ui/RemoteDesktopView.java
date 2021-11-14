@@ -11,8 +11,8 @@ package com.sandpolis.plugin.desktop.client.lifegem.ui;
 
 import com.sandpolis.core.net.stream.StreamSink;
 import com.sandpolis.core.net.stream.StreamSource;
-import com.sandpolis.plugin.desktop.msg.MsgDesktop.EV_DesktopInput;
-import com.sandpolis.plugin.desktop.msg.MsgDesktop.EV_DesktopOutput;
+import com.sandpolis.plugin.desktop.Messages.EV_DesktopStreamInput;
+import com.sandpolis.plugin.desktop.Messages.EV_DesktopStreamOutput;
 
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
@@ -28,9 +28,9 @@ public class RemoteDesktopView extends ImageView {
 
 	private WritableImage image;
 
-	private StreamSource<EV_DesktopInput> source;
+	private StreamSource<EV_DesktopStreamInput> source;
 
-	private StreamSink<EV_DesktopOutput> sink;
+	private StreamSink<EV_DesktopStreamOutput> sink;
 
 	public RemoteDesktopView() {
 		zoomLevel.addListener(l -> {
@@ -42,7 +42,7 @@ public class RemoteDesktopView extends ImageView {
 		sink = new StreamSink<>() {
 
 			@Override
-			public void onNext(EV_DesktopOutput ev) {
+			public void onNext(EV_DesktopStreamOutput ev) {
 
 				if (ev.getPixelData().isEmpty()) {
 
@@ -54,18 +54,18 @@ public class RemoteDesktopView extends ImageView {
 							copy.getPixelReader(), 0, 0);
 				} else {
 
-					image.getPixelWriter().setPixels(ev.getDestX(), ev.getDestY(), ev.getWidth(), ev.getHeight(),
-							pixelFormat.get(), ev.getPixelData().asReadOnlyByteBuffer(), rawRect.getScanlineStride());
+//					image.getPixelWriter().setPixels(ev.getDestX(), ev.getDestY(), ev.getWidth(), ev.getHeight(),
+//							pixelFormat.get(), ev.getPixelData().asReadOnlyByteBuffer(), rawRect.getScanlineStride());
 				}
 			}
 		};
 
 		addEventFilter(MouseEvent.MOUSE_PRESSED, event -> {
-			source.submit(EV_DesktopInput.newBuilder().build());
+			source.submit(EV_DesktopStreamInput.newBuilder().build());
 		});
 
 		addEventFilter(KeyEvent.KEY_PRESSED, event -> {
-			source.submit(EV_DesktopInput.newBuilder().build());
+			source.submit(EV_DesktopStreamInput.newBuilder().build());
 		});
 
 		setImage(image);

@@ -59,13 +59,16 @@ message RQ_DesktopStream {
 
     // The desktop to capture
     string desktop_uuid = 2;
+
+    // The screen scale factor
+    double scale_factor = 3;
 }
 
 enum RS_DesktopStream {
     DESKTOP_STREAM_OK = 0;
 }
 
-message EV_DesktopInput {
+message EV_DesktopStreamInput {
 
     enum PointerButton {
         PRIMARY   = 0;
@@ -103,7 +106,7 @@ message EV_DesktopInput {
     string clipboard = 9;
 }
 
-message EV_DesktopOutput {
+message EV_DesktopStreamOutput {
 
     // The width of the destination block in pixels
     int32 width = 1;

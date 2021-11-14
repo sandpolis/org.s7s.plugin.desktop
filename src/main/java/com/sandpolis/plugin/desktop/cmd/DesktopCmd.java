@@ -12,8 +12,8 @@ package com.sandpolis.plugin.desktop.cmd;
 import java.util.concurrent.CompletionStage;
 
 import com.sandpolis.core.net.cmdlet.Cmdlet;
-import com.sandpolis.plugin.desktop.msg.MsgDesktop.RQ_CaptureScreenshot;
-import com.sandpolis.plugin.desktop.msg.MsgDesktop.RS_CaptureScreenshot;
+import com.sandpolis.plugin.desktop.Messages.RQ_CaptureScreenshot;
+import com.sandpolis.plugin.desktop.Messages.RS_CaptureScreenshot;
 
 /**
  * Contains desktop commands.

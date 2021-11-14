@@ -26,11 +26,11 @@ import com.sandpolis.core.net.exelet.Exelet;
 import com.sandpolis.core.net.exelet.ExeletContext;
 import com.sandpolis.core.net.stream.OutboundStreamAdapter;
 import com.sandpolis.plugin.desktop.agent.kilo.JavaDesktopSource;
-import com.sandpolis.plugin.desktop.msg.MsgDesktop.EV_DesktopOutput;
-import com.sandpolis.plugin.desktop.msg.MsgDesktop.RQ_DesktopStream;
-import com.sandpolis.plugin.desktop.msg.MsgDesktop.RS_DesktopStream;
-import com.sandpolis.plugin.desktop.msg.MsgDesktop.RQ_CaptureScreenshot;
-import com.sandpolis.plugin.desktop.msg.MsgDesktop.RS_CaptureScreenshot;
+import com.sandpolis.plugin.desktop.Messages.EV_DesktopStreamOutput;
+import com.sandpolis.plugin.desktop.Messages.RQ_DesktopStream;
+import com.sandpolis.plugin.desktop.Messages.RS_DesktopStream;
+import com.sandpolis.plugin.desktop.Messages.RQ_CaptureScreenshot;
+import com.sandpolis.plugin.desktop.Messages.RS_CaptureScreenshot;
 
 public final class DesktopExe extends Exelet {
 
@@ -50,7 +50,7 @@ public final class DesktopExe extends Exelet {
 	public static RS_DesktopStream rq_desktop_stream(ExeletContext context, RQ_DesktopStream rq) {
 
 		var source = new JavaDesktopSource();
-		var outbound = new OutboundStreamAdapter<EV_DesktopOutput>(rq.getStreamId(), context.connector,
+		var outbound = new OutboundStreamAdapter<EV_DesktopStreamOutput>(rq.getStreamId(), context.connector,
 				context.request.getFrom());
 		StreamStore.add(source, outbound);
 

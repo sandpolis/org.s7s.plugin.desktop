@@ -21,10 +21,10 @@ import java.util.Arrays;
 
 import com.google.protobuf.UnsafeByteOperations;
 import com.sandpolis.core.net.stream.StreamSource;
-import com.sandpolis.plugin.desktop.msg.MsgDesktop.EV_DesktopOutput;
-import com.sandpolis.plugin.desktop.msg.MsgDesktop.RQ_DesktopStream.ColorMode;
+import com.sandpolis.plugin.desktop.Messages.EV_DesktopStreamOutput;
+import com.sandpolis.plugin.desktop.Messages.RQ_DesktopStream.ColorMode;
 
-public class JavaDesktopSource extends StreamSource<EV_DesktopOutput> {
+public class JavaDesktopSource extends StreamSource<EV_DesktopStreamOutput> {
 
 	private static final int BLOCK_HEIGHT = 16;
 	private static final int BLOCK_WIDTH = 16;
@@ -67,7 +67,7 @@ public class JavaDesktopSource extends StreamSource<EV_DesktopOutput> {
 						for (int v : buffer[j][i])
 							data.writeInt(v);
 
-						submit(EV_DesktopOutput.newBuilder() //
+						submit(EV_DesktopStreamOutput.newBuilder() //
 								.setWidth(BLOCK_WIDTH) //
 								.setHeight(BLOCK_HEIGHT) //
 								.setDestX(BLOCK_WIDTH * i) //

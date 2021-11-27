@@ -18,5 +18,6 @@ module com.sandpolis.plugin.desktop.agent.kilo {
 	requires com.sandpolis.plugin.desktop;
 	requires java.desktop;
 
-	provides com.sandpolis.core.instance.plugin.SandpolisPlugin with com.sandpolis.plugin.desktop.agent.kilo.DesktopPlugin;
+	provides com.sandpolis.core.instance.plugin.SandpolisPlugin
+			with com.sandpolis.plugin.desktop.agent.kilo.DesktopPlugin;
 }

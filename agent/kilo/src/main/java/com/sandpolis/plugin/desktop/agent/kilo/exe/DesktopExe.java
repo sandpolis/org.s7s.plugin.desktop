@@ -42,7 +42,8 @@ public final class DesktopExe extends Exelet {
 					.createScreenCapture(new Rectangle(Toolkit.getDefaultToolkit().getScreenSize()));
 			ImageIO.write(screenshot, "jpg", out);
 
-			return RS_CaptureScreenshot.newBuilder().setData(UnsafeByteOperations.unsafeWrap(out.toByteArray())).build();
+			return RS_CaptureScreenshot.newBuilder().setData(UnsafeByteOperations.unsafeWrap(out.toByteArray()))
+					.build();
 		}
 	}
 

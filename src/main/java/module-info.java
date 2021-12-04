@@ -13,5 +13,4 @@ module com.sandpolis.plugin.desktop {
 
 	requires com.google.protobuf;
 	requires com.sandpolis.core.instance;
-	requires com.sandpolis.core.net;
 }

@@ -20,7 +20,7 @@ import java.io.IOException;
 import java.util.Arrays;
 
 import com.google.protobuf.UnsafeByteOperations;
-import com.sandpolis.core.net.stream.StreamSource;
+import com.sandpolis.core.instance.stream.StreamSource;
 import com.sandpolis.plugin.desktop.Messages.EV_DesktopStreamOutput;
 import com.sandpolis.plugin.desktop.Messages.RQ_DesktopStream.ColorMode;
 

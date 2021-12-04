@@ -9,7 +9,7 @@
 //============================================================================//
 package com.sandpolis.plugin.desktop.agent.kilo.exe;
 
-import static com.sandpolis.core.net.stream.StreamStore.StreamStore;
+import static com.sandpolis.core.instance.stream.StreamStore.StreamStore;
 
 import java.awt.Rectangle;
 import java.awt.Robot;
@@ -22,9 +22,9 @@ import javax.imageio.ImageIO;
 import com.google.protobuf.ByteString;
 import com.google.protobuf.MessageLiteOrBuilder;
 import com.google.protobuf.UnsafeByteOperations;
-import com.sandpolis.core.net.exelet.Exelet;
-import com.sandpolis.core.net.exelet.ExeletContext;
-import com.sandpolis.core.net.stream.OutboundStreamAdapter;
+import com.sandpolis.core.instance.exelet.Exelet;
+import com.sandpolis.core.instance.exelet.ExeletContext;
+import com.sandpolis.core.instance.stream.OutboundStreamAdapter;
 import com.sandpolis.plugin.desktop.agent.kilo.JavaDesktopSource;
 import com.sandpolis.plugin.desktop.Messages.EV_DesktopStreamOutput;
 import com.sandpolis.plugin.desktop.Messages.RQ_DesktopStream;

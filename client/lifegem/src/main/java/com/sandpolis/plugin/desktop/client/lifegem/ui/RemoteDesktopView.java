@@ -9,8 +9,8 @@
 //============================================================================//
 package com.sandpolis.plugin.desktop.client.lifegem.ui;
 
-import com.sandpolis.core.net.stream.StreamSink;
-import com.sandpolis.core.net.stream.StreamSource;
+import com.sandpolis.core.instance.stream.StreamSink;
+import com.sandpolis.core.instance.stream.StreamSource;
 import com.sandpolis.plugin.desktop.Messages.EV_DesktopStreamInput;
 import com.sandpolis.plugin.desktop.Messages.EV_DesktopStreamOutput;
 

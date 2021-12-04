@@ -14,7 +14,6 @@ module com.sandpolis.plugin.desktop.agent.kilo {
 	requires com.google.protobuf;
 	requires com.sandpolis.core.foundation;
 	requires com.sandpolis.core.instance;
-	requires com.sandpolis.core.net;
 	requires com.sandpolis.plugin.desktop;
 	requires java.desktop;
 

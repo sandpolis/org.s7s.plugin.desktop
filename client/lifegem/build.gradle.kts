@@ -14,15 +14,31 @@ plugins {
 	id("com.sandpolis.build.module")
 }
 
+import org.gradle.internal.os.OperatingSystem
+
+repositories {
+	maven {
+		url = uri("https://oss.sonatype.org/content/repositories/snapshots/")
+	}
+}
+
 dependencies {
 	testImplementation("org.junit.jupiter:junit-jupiter-api:5.+")
 	testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.+")
 
 	compileOnly(project.getParent()?.getParent()!!)
 
-	compileOnly("org.openjfx:javafx-base:16:linux")
-	compileOnly("org.openjfx:javafx-graphics:16:linux")
-	compileOnly("org.openjfx:javafx-controls:16:linux")
+	findProject(":instance:com.sandpolis.client.lifegem")?.let {
+		compileOnly(it)
+	} ?: run {
+		if (OperatingSystem.current().isMacOsX()) {
+			compileOnly("com.sandpolis:client.lifegem:+:macos")
+		} else if (OperatingSystem.current().isLinux()) {
+			compileOnly("com.sandpolis:client.lifegem:+:linux")
+		} else {
+			compileOnly("com.sandpolis:client.lifegem:+:windows")
+		}
+	}
 }
 
 eclipse {

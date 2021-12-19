@@ -9,27 +9,40 @@
 
 plugins {
 	id("java-library")
+	kotlin("jvm") version "1.6.0"
 	id("org.s7s.build.module")
-	id("org.s7s.build.protobuf")
-	id("org.s7s.build.plugin")
-	id("org.s7s.build.codegen")
-	id("org.s7s.build.publish")
+}
+
+import org.gradle.internal.os.OperatingSystem
+
+repositories {
+	maven {
+		url = uri("https://oss.sonatype.org/content/repositories/snapshots/")
+	}
 }
 
 dependencies {
 	testImplementation("org.junit.jupiter:junit-jupiter-api:5.+")
 	testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.+")
 
-	if (project.getParent() == null) {
-		api("org.s7s:core.instance:+")
-	} else {
-		api(project(":core:org.s7s.core.instance"))
+	compileOnly(project.getParent()?.getParent()!!)
+
+	findProject(":instance:org.s7s.instance.client.desktop")?.let {
+		compileOnly(it)
+	} ?: run {
+		if (OperatingSystem.current().isMacOsX()) {
+			compileOnly("org.s7s:client.lifegem:+:macos")
+		} else if (OperatingSystem.current().isLinux()) {
+			compileOnly("org.s7s:client.lifegem:+:linux")
+		} else {
+			compileOnly("org.s7s:client.lifegem:+:windows")
+		}
 	}
 }
 
-sandpolis_plugin {
-	id = project.name
-	coordinate = "org.s7s:sandpolis-plugin-desktop"
-	name = "Desktop Plugin"
-	description = ""
+eclipse {
+	project {
+		name = "org.s7s.plugin.desktop:client:lifegem"
+		comment = "org.s7s.plugin.desktop:client:lifegem"
+	}
 }

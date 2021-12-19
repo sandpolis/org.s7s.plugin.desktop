@@ -6,19 +6,13 @@
 //  version 2. You may not use this file except in compliance with the MPLv2. //
 //                                                                            //
 //============================================================================//
+module org.s7s.plugin.desktop.client.lifegem {
+	exports org.s7s.plugin.desktop.client.lifegem;
 
-rootProject.name = "org.s7s.plugin.desktop"
+	requires org.s7s.core.instance;
+	requires org.s7s.plugin.desktop;
+	requires javafx.graphics;
+	requires com.google.protobuf;
 
-include("client:lifegem")
-include("agent:java")
-
-buildscript {
-	repositories {
-		maven {
-			url = uri("https://plugins.gradle.org/m2/")
-		}
-	}
-	dependencies {
-		classpath("org.s7s:org.s7s.build:+")
-	}
+	provides org.s7s.core.instance.plugin.SandpolisPlugin with org.s7s.plugin.desktop.client.lifegem.DesktopPlugin;
 }
